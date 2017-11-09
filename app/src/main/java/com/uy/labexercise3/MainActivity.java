@@ -3,6 +3,7 @@ package com.uy.labexercise3;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -94,4 +95,75 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, "Data saved in Internal Cache", Toast.LENGTH_SHORT).show();
     }
+
+    public void externalCache (View view) {
+        String userFileName = etFilename.getText().toString();
+        File folder = getExternalCacheDir();
+        File file = new File(folder, userFileName + ".txt");
+        String message = etData.getText().toString();
+        try {
+            fos = new FileOutputStream(file);
+            fos.write(message.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        Toast.makeText(this, "Data saved in External Cache", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void externalStorage (View view) {
+        String userFileName = etFilename.getText().toString();
+        File folder = getExternalFilesDir("Uy");
+        File file = new File(folder, userFileName + ".txt");
+        String message = etData.getText().toString();
+        try {
+            fos = new FileOutputStream(file);
+            fos.write(message.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(this, "Data saved to External Storage", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void extPublicStorage (View view) {
+        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+        File file = new File(folder, "myText4.txt");
+        String message = etData.getText().toString();
+        try {
+            fos = new FileOutputStream(file);
+            fos.write(message.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(this, "Data saved to External Public", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
+
