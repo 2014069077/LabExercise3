@@ -38,7 +38,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
     public void btnclickLoadSharedPref (View view) {
-        SharedPreferences preferences = getSharedPreferences("SharedPreferencesLabExer3", 0);
+        SharedPreferences preferences = getSharedPreferences("FileSharedPreferencesLabExer3", 0);
         String data2 = preferences.getString("data", "");
         String file2 = preferences.getString("filename", "");
         tvDisplay2.setText("from Shared Preferences");
