@@ -50,7 +50,7 @@ public class SecondActivity extends AppCompatActivity {
         StringBuffer buffer = new StringBuffer();
         int read = 0;
         try {
-            fis = openFileInput("InternalStorageLabExer3.txt");
+            fis = openFileInput("InternalStorageLabExercise3file.txt");
             while ((read = fis.read()) != -1) {
                 buffer.append((char) read);
             }
@@ -60,28 +60,28 @@ public class SecondActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        tvDisplay2.setText("from Internal Storage");
-        tvDisplay.setText("The credentials from Internal Storage are " + buffer.toString());
+        tvDisplay2.setText("Internal Storage");
+        tvDisplay.setText("Display " + buffer.toString());
         tvDisplay.setGravity(Gravity.CENTER_HORIZONTAL);
     }
 
     public void btnclickLoadInternalCache(View view) {
-        tvDisplay2.setText("from Internal Cache");
+        tvDisplay2.setText("Internal Cache");
 
     }
 
     public void btnclickLoadExternalCache(View view) {
-        tvDisplay2.setText("from External Cache");
+        tvDisplay2.setText("External Cache");
 
     }
 
     public void btnclickLoadExternalStorage(View view) {
-        tvDisplay2.setText("from External Storage");
+        tvDisplay2.setText("External Storage");
 
     }
 
     public void btnclickLoadExternalPublicStorage(View view) {
-        tvDisplay2.setText("from External Public Storage");
+        tvDisplay2.setText("External Public Storage");
 
     }
 
